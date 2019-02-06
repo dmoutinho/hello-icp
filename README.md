@@ -24,6 +24,10 @@ $ docker build -t dmoutinho/hello-icp .
 $ docker tag dmoutinho/hello-icp:latest mycluster.icp:8500/server/hello-icp
 ```
 
+- Create new namespace server
+
+- Login
+
 - Push image
 ```sh
 $ docker push mycluster.icp:8500/server/hello-icp:latest
