@@ -21,7 +21,8 @@ public class HelloIcpApplication {
 }
 
 @RestController
-@RequestMapping("/hello-icp")
+//@RequestMapping("/hello-icp")
+@RequestMapping("/")
 class HelloICPController {
     
 	private String getAllIPs() throws SocketException {
@@ -41,7 +42,7 @@ class HelloICPController {
 	
 	@GetMapping("")
     String findAll() {
-    	String str = "v1.0.1 - Hello pod: <br>";
+    	String str = "v1.0.2 - Hello container: <br>";
     	try {
 			//str += InetAddress.getLocalHost().getHostAddress();
 			str += getAllIPs();
