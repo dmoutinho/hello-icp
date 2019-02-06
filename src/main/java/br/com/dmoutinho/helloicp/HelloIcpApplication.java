@@ -41,7 +41,7 @@ class HelloICPController {
 	
 	@GetMapping("")
     String findAll() {
-    	String str = "Hello pod: <br>";
+    	String str = "v1.0.0 - Hello pod: <br>";
     	try {
 			//str += InetAddress.getLocalHost().getHostAddress();
 			str += getAllIPs();
