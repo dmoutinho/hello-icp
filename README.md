@@ -132,3 +132,37 @@ $ docker push mycluster.icp:8500/server/hello-icp:latest
   }
 }
 ```
+
+- Ingress
+```sh
+{
+  "apiVersion": "extensions/v1beta1",
+  "kind": "Ingress",
+  "metadata": {
+    "name": "hello-icp",
+    "namespace": "default",
+    "resourceVersion": "71355",
+    "annotations": {
+      "icp.management.ibm.com/rewrite-target": "/",
+      "kubernetes.io/ingress.class": "ibm-icp-management"
+    }
+  },
+  "spec": {
+    "rules": [
+      {
+        "http": {
+          "paths": [
+            {
+              "path": "/hello-icp",
+              "backend": {
+                "serviceName": "hello-icp",
+                "servicePort": 9080
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
