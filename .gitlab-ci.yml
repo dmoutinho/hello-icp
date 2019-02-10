@@ -1,11 +1,11 @@
-image: maven
+image: docker
 
 stages:
   - build
 
 build:
   stage: build
-  script: mvn clean install
-  artifacts:
-    paths:
-      - target/hello-icp-0.0.1-SNAPSHOT.jar
+  script:
+  - docker build -t registry.gitlab.com/dmoutinho/hello-icp .
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+  - docker push registry.gitlab.com/dmoutinho/hello-icp
