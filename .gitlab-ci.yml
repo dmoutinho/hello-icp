@@ -5,7 +5,15 @@ services:
 stages:
   - build
 
-build:
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: mvn clean install
+  artifacts:
+    paths:
+      - target/hello-icp-0.0.1-SNAPSHOT.jar
+      
+docker-build:
   stage: build
   script:
   - docker build -t registry.gitlab.com/dmoutinho/hello-icp .
