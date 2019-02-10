@@ -1,4 +1,4 @@
-FROM maven
+FROM maven:3.5.2
 COPY . /usr/src/myapp
 RUN cd /usr/src/myapp/ && mvn clean install
 WORKDIR /usr/src/myapp/target
