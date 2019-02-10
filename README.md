@@ -1,13 +1,19 @@
 # Hello ICP
 
-- Tag image
+- Create hello namespace
 ```sh
 $ docker tag dmoutinho/hello-icp:latest mycluster.icp:8500/server/hello-icp
 ```
 
-- Create new namespace server
+- Tag image
+```sh
+$ docker tag dmoutinho/hello-icp:latest mycluster.icp:8500/hello/hello-icp
+```
 
 - Login
+```sh
+$ docker login mycluster.icp:8500
+```
 
 - Push image
 ```sh
