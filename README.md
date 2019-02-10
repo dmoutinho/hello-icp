@@ -1,28 +1,5 @@
 # Hello ICP
 
-<p align="center">
-  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTMJaz2F3zNTzpcvSBMegVJFsxC3I66xfwET_xpV55I9hv2Zx8-iaui1CjW47Z0pFYP3MJB0JcLwqBn/pub?w=606&h=174">
-</p>
-
-- Create packge
-```sh
-$ mvn clean install
-```
-
-- Dockerfile
-```sh
-FROM dmoutinho/openjdk 
-COPY . /usr/src/myapp 
-WORKDIR /usr/src/myapp 
-CMD java -Dserver.port=9080 -jar hello-icp-0.0.1-SNAPSHOT.jar
-EXPOSE 9080
-```
-
-- Create image
-```sh
-$ docker build -t dmoutinho/hello-icp .
-```
-
 - Tag image
 ```sh
 $ docker tag dmoutinho/hello-icp:latest mycluster.icp:8500/server/hello-icp
@@ -170,3 +147,13 @@ $ docker push mycluster.icp:8500/server/hello-icp:latest
   }
 }
 ```
+
+# Docker Hub Flow
+<p align="center">
+  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTMJaz2F3zNTzpcvSBMegVJFsxC3I66xfwET_xpV55I9hv2Zx8-iaui1CjW47Z0pFYP3MJB0JcLwqBn/pub?w=606&h=174">
+</p>
+
+# Gitlab Flow
+<p align="center">
+  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTLeM2VcsZdQY-hQUfXBzVhD6AiGieBNaa_Bqo1i_B0uymrf5PmEMj5QaI-l85cu6r6Ink1tzPmA_YZ/pub?w=796&h=188">
+</p>
