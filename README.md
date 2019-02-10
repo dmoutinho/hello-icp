@@ -1,5 +1,7 @@
 # hello-icp
 
+![N|Solid](https://docs.google.com/drawings/d/e/2PACX-1vTMJaz2F3zNTzpcvSBMegVJFsxC3I66xfwET_xpV55I9hv2Zx8-iaui1CjW47Z0pFYP3MJB0JcLwqBn/pub?w=606&h=174)
+
 - Create packge
 ```sh
 $ mvn clean install
