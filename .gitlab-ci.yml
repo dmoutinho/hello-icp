@@ -16,6 +16,6 @@ maven-build:
 docker-build:
   stage: build
   script:
-  - docker build -t registry.gitlab.com/dmoutinho/hello-icp .
+  - docker build -t $IMAGE_TAG .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-  - docker push registry.gitlab.com/dmoutinho/hello-icp
+  - docker push $IMAGE_TAG
