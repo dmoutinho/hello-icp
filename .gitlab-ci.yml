@@ -31,5 +31,5 @@ kubernetes-deploy:
   script:
   - mkdir -p /etc/deploy
   - echo ${kube_config} | base64 -d > ${KUBECONFIG}
-  - kubectl config use-context homekube
+  - kubectl config use-context  your-first-cluster-1
   - kubectl --record deployment.apps/hello-icp-deployment set image deployment.v1.apps/hello-icp-deployment hello-icp=$IMAGE_TAG image updated
