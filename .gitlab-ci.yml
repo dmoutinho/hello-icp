@@ -4,9 +4,11 @@ services:
 
 variables:
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  KUBECONFIG: /etc/deploy/config
 
 stages:
   - build
+  - deploy
 
 maven-build:
   image: maven:3-jdk-8
@@ -22,3 +24,12 @@ docker-build:
   - docker build -t $IMAGE_TAG .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   - docker push $IMAGE_TAG
+
+kubernetes-deploy:
+  image: dmoutinho/kubectl
+  stage: deploy
+  script:
+  - mkdir -p /etc/deploy
+  - echo ${kube_config} | base64 -d > ${KUBECONFIG}
+  - kubectl config use-context homekube
+  - kubectl --record deployment.apps/hello-icp-deployment set image deployment.v1.apps/hello-icp-deployment hello-icp=$IMAGE_TAG image updated
