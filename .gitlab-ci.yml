@@ -36,7 +36,7 @@ kubernetes-deploy:
     - tags
   script:
   - mkdir -p $HOME/.kube
-  - ls  $KUBECONFIG
+  - cat $KUBECONFIG
   - echo -n $KUBECONFIG | base64 -d > $HOME/.kube/config
   - kubectl config view  
   - kubectl config use-context  your-first-cluster-1
