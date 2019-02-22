@@ -13,6 +13,8 @@ stages:
 maven-build:
   image: maven:3-jdk-8
   stage: build
+  only:
+    - tags
   script: mvn clean install
   artifacts:
     paths:
@@ -20,6 +22,8 @@ maven-build:
       
 docker-build:
   stage: build
+  only:
+    - tags
   script:
   - docker build -t $IMAGE_TAG .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
@@ -28,9 +32,11 @@ docker-build:
 kubernetes-deploy:
   image: dmoutinho/kubectl
   stage: deploy
+  only:
+    - tags
   script:
   - mkdir -p $HOME/.kube
-  - echo  $KUBECONFIG
+  - ls  $KUBECONFIG
   - echo -n $KUBECONFIG | base64 -d > $HOME/.kube/config
   - kubectl config view  
   - kubectl config use-context  your-first-cluster-1
