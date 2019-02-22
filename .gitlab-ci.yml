@@ -30,6 +30,7 @@ kubernetes-deploy:
   stage: deploy
   script:
   - mkdir -p $HOME/.kube
+  - echo  $KUBECONFIG
   - echo -n $KUBECONFIG | base64 -d > $HOME/.kube/config
   - kubectl config view  
   - kubectl config use-context  your-first-cluster-1
