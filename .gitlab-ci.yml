@@ -37,7 +37,7 @@ kubernetes-deploy:
   script:
   - mkdir -p $HOME/.kube
   - echo $K8_GOOGLE_CONFIG
-  - echo -n $K8_GOOGLE_CONFIG | base64 -d > $HOME/.kube/config
+  - echo $K8_GOOGLE_CONFIG > $HOME/.kube/config
   - kubectl config view  
   - kubectl config use-context  your-first-cluster-1
   - kubectl --record deployment.apps/hello-icp-deployment set image deployment.v1.apps/hello-icp-deployment hello-icp=$IMAGE_TAG image updated
