@@ -42,7 +42,7 @@ class HelloICPController {
 	
 	@GetMapping("")
     String findAll() {
-    	String str = "v1.0.3 - Hello container: <br>";
+    	String str = "v1.0.4 - Hello container: <br>";
     	try {
 			//str += InetAddress.getLocalHost().getHostAddress();
 			str += getAllIPs();
