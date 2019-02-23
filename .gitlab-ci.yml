@@ -30,7 +30,7 @@ docker-build:
   - docker push $IMAGE_TAG
   - docker login -u dmoutinho -p $DOCKER_PASS
   - docker tag $IMAGE_TAG dmoutinho/hello-icp-$CI_COMMIT_TAG-gitlab
-  - docker push dmoutinho/hello-icp-$CI_COMMIT_TAG-gitlab
+  - docker push dmoutinho/hello-icp:$CI_COMMIT_TAG-gitlab
 
 kubernetes-deploy:
   image: dmoutinho/kubectl-gcloud
@@ -44,4 +44,4 @@ kubernetes-deploy:
   - echo "$GOOGLE_KEY" | base64 -d > $HOME/.kube/google-key
   - /google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=$HOME/.kube/google-key
   - echo $IMAGE_TAG
-  - kubectl --record deployment.apps/hello-icp-deployment set image deployment.v1.apps/hello-icp-deployment hello-icp=dmoutinho/hello-icp-$CI_COMMIT_TAG-gitlab image updated
+  - kubectl --record deployment.apps/hello-icp-deployment set image hello-icp=dmoutinho/hello-icp:$CI_COMMIT_TAG-gitlab
