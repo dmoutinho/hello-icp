@@ -30,7 +30,7 @@ docker-build:
   - docker push $IMAGE_TAG
 
 kubernetes-deploy:
-  image: dmoutinho/kubectl
+  image: dmoutinho/kubectl-gcloud
   stage: deploy
   only:
     - tags
