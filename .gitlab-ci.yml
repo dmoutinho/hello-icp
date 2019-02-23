@@ -25,7 +25,7 @@ docker-build:
   only:
     - tags
   script:
-  - echo $K8_GOOGLE_CONFIG
+  - echo -n $K8_GOOGLE_CONFIG
   - docker build -t $IMAGE_TAG .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   - docker push $IMAGE_TAG
