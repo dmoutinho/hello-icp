@@ -38,7 +38,7 @@ kubernetes-deploy:
   - mkdir -p $HOME/.kube
   - echo "$K8_GOOGLE_CONFIG" | base64 -d > $HOME/.kube/config
   - echo "$GOOGLE_KEY" | base64 -d > $HOME/.kube/google-key
-  - gcloud auth activate-service-account --key-file=$HOME/.kube/google-key
+  - /google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=$HOME/.kube/google-key
   - kubectl config view  
   - kubectl get all
   - kubectl --record deployment.apps/hello-icp-deployment set image deployment.v1.apps/hello-icp-deployment hello-icp=$IMAGE_TAG image updated
