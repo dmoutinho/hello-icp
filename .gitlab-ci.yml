@@ -37,6 +37,7 @@ kubernetes-deploy:
   script:
   - mkdir -p $HOME/.kube
   - echo "$K8_GOOGLE_CONFIG" | base64 -d > $HOME/.kube/config
+  - cat $HOME/.kube/config
   - echo "$GOOGLE_KEY" | base64 -d > $HOME/.kube/google-key
   - /google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=$HOME/.kube/google-key
   - kubectl config view  
