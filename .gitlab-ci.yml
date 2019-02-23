@@ -25,7 +25,6 @@ docker-build:
   only:
     - tags
   script:
-  - env
   - docker build -t $IMAGE_TAG .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   - docker push $IMAGE_TAG
@@ -36,6 +35,7 @@ kubernetes-deploy:
   only:
     - tags
   script:
+  - env
   - mkdir -p $HOME/.kube
   - echo "$K8_GOOGLE_CONFIG" | base64 -d > $HOME/.kube/config
   - cat $HOME/.kube/config
