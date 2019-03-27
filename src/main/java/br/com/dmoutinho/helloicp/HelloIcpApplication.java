@@ -3,11 +3,16 @@ package br.com.dmoutinho.helloicp;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,35 +26,72 @@ public class HelloIcpApplication {
 }
 
 @RestController
-//@RequestMapping("/hello-icp")
 @RequestMapping("/")
 class HelloICPController {
     
-	private String getAllIPs() throws SocketException {
-		String all = "";
+	@Value("${version}")
+	private String version;
+	
+	private List<String> getAllIPs() throws SocketException {
+		List<String> ips = new ArrayList<>();
 		Enumeration<?> e = NetworkInterface.getNetworkInterfaces();
 		while(e.hasMoreElements()) {
 		    NetworkInterface n = (NetworkInterface) e.nextElement();
 		    Enumeration<?> ee = n.getInetAddresses();
 		    while (ee.hasMoreElements()) {
 		        InetAddress i = (InetAddress) ee.nextElement();
-		        //System.out.println(i.getHostAddress());
-		        all += i.getHostAddress() + "<br>";
+		        ips.add(i.getHostAddress());
 		    }
 		}
-		return all;
+		return ips;
 	}
 	
-	@GetMapping("")
-    String findAll() {
-    	String str = "v1.0.4 - Hello container: <br>";
+	@GetMapping("/ips")
+	ResponseEntity<IPList> ips() {
+    	//String str = "v1.0.4 - Hello container: <br>";
+		ResponseEntity<IPList> responseEntity = null;
     	try {
-			//str += InetAddress.getLocalHost().getHostAddress();
-			str += getAllIPs();
+    		IPList ipList = new IPList();
+    		ipList.setIps(getAllIPs());
+    		responseEntity = new ResponseEntity<IPList>(ipList,HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return str;
+        return responseEntity;
     }
-    
+
+	@GetMapping("/version")
+	ResponseEntity<Version> version() {
+		ResponseEntity<Version> responseEntity = null;
+    	try {
+    		responseEntity = new ResponseEntity<Version>(new Version(this.version),HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        return responseEntity;
+    }	
+	
+}
+
+class Version {
+	private String version;
+	public Version(String version) {
+		this.version = version;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
+	}
+}
+
+class IPList {
+	private List<String> ips = new ArrayList<>();
+	public List<String> getIps() {
+		return ips;
+	}
+	public void setIps(List<String> ips) {
+		this.ips = ips;
+	}	
 }
