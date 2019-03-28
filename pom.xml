@@ -19,7 +19,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<tag>teste</tag>
+		<tag>SNAPSHOT</tag>
 	</properties>
 
 	<dependencies>
@@ -43,51 +43,15 @@
 	</dependencies>
 
 	<build>
-	
-		<!-- 
-		https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html
-		https://stackoverflow.com/questions/41578285/maven-resources-plugin-filtering-not-working
-		https://stackoverflow.com/questions/34313348/what-is-the-proper-way-to-replace-files-in-maven
-		<resources>
-		  <resource>
-		    <directory>src/main/resources</directory>
-		    <filtering>true</filtering>
-		  </resource>
-		</resources>
-		 -->
-		 	
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                	<addResources>false</addResources>
+                </configuration>				
 			</plugin>
-
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-		            <execution>
-		                <id>copy-resources</id>
-		                <!-- here the phase you need -->
-		                <phase>initialize</phase>
-		                <configuration>
-		                    <encoding>UTF-8</encoding>
-		                    <outputDirectory>${basedir}/target/classes</outputDirectory>
-		                    <resources>
-		                        <resource>
-		                            <directory>${basedir}/src/main/resources</directory>
-		                            <filtering>true</filtering>
-		                        </resource>
-		                    </resources>
-		                </configuration>
-		            </execution>
-		        </executions>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            
-		</plugins>
-		
+		</plugins>		
 	</build>
 
 </project>
