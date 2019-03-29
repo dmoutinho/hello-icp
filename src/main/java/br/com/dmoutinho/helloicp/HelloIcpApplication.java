@@ -60,6 +60,17 @@ class HelloICPController {
         return responseEntity;
     }
 
+	@GetMapping("/version")
+	ResponseEntity<Version> version() {
+		ResponseEntity<Version> responseEntity = null;
+    	try {
+    		responseEntity = new ResponseEntity<Version>(new Version(this.version),HttpStatus.OK);
+					} catch (Exception e) {
+			e.printStackTrace();
+		}
+		        return responseEntity;
+    }	
+	
 	@GetMapping("/healthz")
 	ResponseEntity<String> healthz() {
 		ResponseEntity<String> responseEntity = null;
