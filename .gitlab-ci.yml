@@ -47,4 +47,4 @@ kubernetes-deploy:
   - echo "$GOOGLE_KEY" | base64 -d > $HOME/.kube/google-key
   - /google-cloud-sdk/bin/gcloud auth activate-service-account --key-file=$HOME/.kube/google-key
   - echo $IMAGE_TAG
-  - kubectl --record deployment.apps/hello-icp-deployment set image hello-icp=dmoutinho/hello-icp:$CI_COMMIT_TAG-gitlab
+  - kubectl --record deployment.apps/hello-icp-cmd set image hello-icp-cmd=dmoutinho/hello-icp:$CI_COMMIT_TAG-gitlab
