@@ -8,6 +8,7 @@ variables:
 
 stages:
   - build
+  - release
   - deploy
 
 maven-build:
@@ -20,8 +21,8 @@ maven-build:
     paths:
       - target/hello-icp-0.0.1-SNAPSHOT.jar
       
-docker-build:
-  stage: build
+docker-release:
+  stage: release
   dependencies:
     - maven-build
   only:
