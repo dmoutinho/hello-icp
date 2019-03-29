@@ -60,8 +60,8 @@ class HelloICPController {
         return responseEntity;
     }
 
-	@GetMapping("/")
-	ResponseEntity<String> health() {
+	@GetMapping("/healthz")
+	ResponseEntity<String> healthz() {
 		ResponseEntity<String> responseEntity = null;
 		try {
 			responseEntity = new ResponseEntity<String>("OK",HttpStatus.OK);
