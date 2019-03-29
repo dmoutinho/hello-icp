@@ -22,6 +22,8 @@ maven-build:
       
 docker-build:
   stage: build
+  dependencies:
+    - maven-build
   only:
     - tags
   script:
