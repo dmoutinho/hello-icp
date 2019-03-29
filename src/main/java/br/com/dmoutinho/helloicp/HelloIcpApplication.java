@@ -72,7 +72,7 @@ class HelloICPController {
 		}	
 	}
 
-	@GetMapping("/")
+	@GetMapping("")
 	ResponseEntity<String> root() {
 		ResponseEntity<String> responseEntity = null;
 		try {
