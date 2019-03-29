@@ -72,6 +72,18 @@ class HelloICPController {
 		}	
 	}
 
+	@GetMapping("/")
+	ResponseEntity<String> root() {
+		ResponseEntity<String> responseEntity = null;
+		try {
+			responseEntity = new ResponseEntity<String>("OK",HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return responseEntity;
+		}	
+	}
+
 class Version {
 	private String version;
 	public Version(String version) {
