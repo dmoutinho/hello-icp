@@ -68,8 +68,7 @@ class HelloICPController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			return responseEntity;
-		}	
+		return responseEntity;
 	}
 
 	@GetMapping("")
@@ -80,9 +79,10 @@ class HelloICPController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			return responseEntity;
-		}	
-	}
+		return responseEntity;
+	}	
+		
+}
 
 class Version {
 	private String version;
