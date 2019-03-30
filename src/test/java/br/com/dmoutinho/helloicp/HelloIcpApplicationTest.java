@@ -19,7 +19,7 @@ public class HelloIcpApplicationTest {
 		
 		// when
 		String v = "1.0.0";
-		//version.setVersion(v);
+		version.setVersion(v);
 
 		// then
 		assertTrue(version.getVersion().equals(v));		
