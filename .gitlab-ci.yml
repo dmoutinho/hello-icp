@@ -19,8 +19,8 @@ maven-test:
    - tags
   script:
   - mvn test
-  - curl -X POST -H 'Content-type: application/json' --data '{"text":"$IMAGE_TAG - maven-test success"}' $SLACK_WEB_HOOK
-
+  - "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"$IMAGE_TAG - maven-test success\"}' $SLACK_WEB_HOOK"
+  
 maven-build:
   image: maven:3-jdk-8
   dependencies:
