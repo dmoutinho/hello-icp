@@ -7,12 +7,22 @@ variables:
   KUBECONFIG: /etc/deploy/config
 
 stages:
+  - test
   - build
   - release
   - deploy
 
+maven-test:
+  image: maven:3-jdk-8
+  stage: test
+  only:
+   - tags
+  script: mvn test
+
 maven-build:
   image: maven:3-jdk-8
+  dependencies:
+    - maven-test
   stage: build
   only:
     - tags
