@@ -156,10 +156,10 @@ $ docker push mycluster.icp:8500/server/hello-icp:latest
 
 # Docker Hub Flow
 <p align="center">
-  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTMJaz2F3zNTzpcvSBMegVJFsxC3I66xfwET_xpV55I9hv2Zx8-iaui1CjW47Z0pFYP3MJB0JcLwqBn/pub?w=606&h=174">
+  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTMJaz2F3zNTzpcvSBMegVJFsxC3I66xfwET_xpV55I9hv2Zx8-iaui1CjW47Z0pFYP3MJB0JcLwqBn/pub?w=1000">
 </p>
 
 # Gitlab Flow
 <p align="center">
-  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTLeM2VcsZdQY-hQUfXBzVhD6AiGieBNaa_Bqo1i_B0uymrf5PmEMj5QaI-l85cu6r6Ink1tzPmA_YZ/pub?w=796&h=188">
+  <img src="https://docs.google.com/drawings/d/e/2PACX-1vTLeM2VcsZdQY-hQUfXBzVhD6AiGieBNaa_Bqo1i_B0uymrf5PmEMj5QaI-l85cu6r6Ink1tzPmA_YZ/pub?w=1000">
 </p>
