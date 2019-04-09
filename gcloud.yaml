@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-icp-service
+spec:
+  selector:
+    app: hello-icp
+  type: NodePort
+  ports:
+   - port: 9080
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello-icp-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: hello-icp-service
+          servicePort: 9080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-icp-deployment
+  labels:
+    app: hello-icp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-icp
+  template:
+    metadata:
+      labels:
+        app: hello-icp
+    spec:
+      containers:
+      - name: hello-icp
+        image: dmoutinho/hello-icp:1.0.12.15-gitlab
+        ports:
+        - containerPort: 9080
