@@ -72,6 +72,26 @@ class HelloICPController {
 		}
         return responseEntity;
     }
+
+	@GetMapping("/headers")
+	ResponseEntity<List<Header>> headers(HttpServletRequest req) {
+		ResponseEntity<List<Header>> responseEntity = null;
+    	try {
+    		
+    		List<Header> headers = new ArrayList<>();
+    		Enumeration<String> headersEnum = req.getHeaderNames();
+    		while( headersEnum.hasMoreElements() ) {
+    			String name = headersEnum.nextElement();
+    			headers.add(new Header(name,req.getHeader(name)));
+    		}
+    		
+    		responseEntity = new ResponseEntity<List<Header>>(headers,HttpStatus.OK);
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        return responseEntity;
+    }	
 	
 	@GetMapping("/version")
 	ResponseEntity<Version> version() {
@@ -106,6 +126,27 @@ class HelloICPController {
 		return responseEntity;
 	}	
 		
+}
+
+class Header {
+	private String name;
+	private String value;
+	public Header(String name, String value) {
+		this.name = name;
+		this.value = value;		
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
 }
 
 class Version {
