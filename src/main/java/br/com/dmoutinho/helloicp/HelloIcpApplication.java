@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -60,6 +62,17 @@ class HelloICPController {
         return responseEntity;
     }
 
+	@GetMapping("/ip-client")
+	ResponseEntity<String> ipClient(HttpServletRequest req) {
+		ResponseEntity<String> responseEntity = null;
+    	try {
+    		responseEntity = new ResponseEntity<String>(req.getRemoteAddr(),HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        return responseEntity;
+    }
+	
 	@GetMapping("/version")
 	ResponseEntity<Version> version() {
 		ResponseEntity<Version> responseEntity = null;
